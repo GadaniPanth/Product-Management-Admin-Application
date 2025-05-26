@@ -1,0 +1,122 @@
+/* Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Full-page gradient background */
+.linear-gradient {
+  height: 100svh;
+  background: linear-gradient(90deg, #2a7b9b 0%, #57c785 50%, #eddd53 100%);
+  position: relative;
+}
+
+/* Login card */
+.login-container {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 25%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInUp 0.8s ease-out;
+  min-width: 400px;
+}
+
+/* Animation for card entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Header */
+h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #333;
+}
+
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+/* Input fields */
+input[type="email"],
+input[type="password"] {
+  width: 90%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 5px rgba(118, 75, 162, 0.4);
+  outline: none;
+}
+
+input.invalid {
+  border-color: #d93025;
+  background-color: #fff3f3;
+}
+
+/* Error messages under inputs */
+.error-message {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(to right, #5a67d8, #6b46c1);
+  transform: scale(1.03);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* General error styling (like form-wide error messages) */
+.error {
+  color: #d93025;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}

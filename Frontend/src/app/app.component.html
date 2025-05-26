@@ -1,0 +1,36 @@
+<!-- <app-login></app-login> -->
+
+<div class="app-wrapper">
+    <div class="menu_btn" (click)="onMenuClick($event)" *ngIf="!IsDashboard">
+        <input type="checkbox" class="menu" id="menu" [checked]="isMenuOpen">
+        <label>
+        <!-- <h2 class="font_16 crp menu_text">Menu</h2> -->
+        </label>
+    </div>
+    <nav aria-label="Admin navigation" class="navbar" [ngClass]="{'active': isMenuOpen}">
+        <ul>
+            <li>
+                <a routerLink="/admin" routerLinkActive="active" class="nav-link" (click)="onMenuClick($event)" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="fa-solid fa-desktop"></i> Dashboard
+                </a>        
+            </li>
+            <li>
+                <a routerLink="/products" routerLinkActive="active" class="nav-link" (click)="onMenuClick($event)" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="fa fa-box"></i> Manage Products
+                </a>        
+            </li>
+            <li>
+                <a routerLink="/products/create" routerLinkActive="active" class="nav-link" (click)="onMenuClick($event)" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="fa fa-plus-circle"></i> Add Products
+                </a>        
+            </li>
+            <li>
+                <a routerLink="/reports" routerLinkActive="active" class="nav-link" (click)="onMenuClick($event)" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="fa fa-chart-line"></i> Reports
+                </a>
+            </li>
+        </ul>
+  </nav>
+  <div class="menu_overlay" [ngClass]="{'active': isMenuOpen}" (click)="onMenuClick($event)"></div>
+    <router-outlet></router-outlet>
+</div>

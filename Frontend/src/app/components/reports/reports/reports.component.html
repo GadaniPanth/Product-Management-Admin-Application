@@ -1,0 +1,40 @@
+<div class="reports-container">
+  <h2>Product Reports</h2>
+  <ng-container *ngIf="products.length > 0; else NoProducts">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="countData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabelCount"
+      ariaLabel="Bar chart showing product count by name"
+    >
+    </ngx-charts-bar-vertical>
+
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="amountData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabelAmount"
+      style="margin-top: 30px"
+      ariaLabel="Bar chart showing product amount by name"
+    >
+    </ngx-charts-bar-vertical>
+  </ng-container>
+  <ng-template #NoProducts>
+    <h1>{{ message }}</h1>
+  </ng-template>
+</div>

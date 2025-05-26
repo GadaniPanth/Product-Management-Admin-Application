@@ -1,0 +1,153 @@
+<div class="product-create-container">
+  <h2>{{ formHead }}</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <!-- Product Name -->
+      <div>
+        <label for="name">Product Name</label>
+        <input id="name" formControlName="name" type="text" />
+        <div *ngIf="f.name.touched && f.name.invalid">
+          <small class="text-danger">
+            Product name is required (min 3 characters).
+          </small>
+        </div>
+      </div>
+
+      <!-- Stock -->
+      <div>
+        <label for="stock">Stock</label>
+        <input id="stock" formControlName="stock" type="number" />
+        <div *ngIf="f.stock.touched && f.stock.invalid">
+          <small class="text-danger">Stock is required.</small>
+        </div>
+      </div>
+
+      <!-- Category -->
+      <div>
+        <label for="category">Category</label>
+        <input id="category" formControlName="category" type="text" />
+        <div *ngIf="f.category.touched && f.category.invalid">
+          <small class="text-danger">Category is required.</small>
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div>
+        <label for="amount">Amount</label>
+        <input id="amount" formControlName="amount" type="number" />
+        <div *ngIf="f.amount.touched && f.amount.invalid">
+          <small class="text-danger">Amount is required.</small>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div style="grid-column: span 2; width: 100%">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" rows="5"></textarea>
+        <div *ngIf="f.description.touched && f.description.invalid">
+          <small class="text-danger">Description is required.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="image-upload-section" #imageInput style="margin-top: 20px" *ngIf="isEditForm">
+    <!-- <div class="image-upload-section" style="margin-top: 20px"> -->
+      <div class="formInput" style="position: relative">
+        <label
+          for="fileInput"
+          style="
+            cursor: pointer;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            padding: 15px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+          "
+        >
+          Select Images
+        </label>
+        <input
+          id="fileInput"
+          type="file"
+          (change)="onMediaChange($event)"
+          accept="image/jpeg"
+          multiple
+          style="
+            opacity: 0;
+            z-index: 9;
+            position: relative;
+            width: 200px;
+            cursor: pointer;
+          "
+        />
+      </div>
+
+      <!-- Media Previews -->
+      <div class="mediaFlex d-grid" style="margin-top: 20px">
+        <ng-container *ngIf="isDefaultImage && isEditForm; else imagePreview">
+          <img
+            [src]="defaultImage"
+            alt="media"
+            style="
+              aspect-ratio: 1;
+              object-fit: cover;
+              width: 200px;
+              height: 200px;
+              border-radius: 10px;
+              display: block;
+            "
+          />
+        </ng-container>
+        
+        <ng-template #imagePreview>
+          <div
+            *ngFor="let media of mediaArray; let i = index"
+            class="mediaGallery"
+            style="position: relative; display: inline-block; margin: 10px"
+          >
+            <span
+              class="material-symbols-outlined"
+              (click)="removeMedia(i)"
+              style="
+                cursor: pointer;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background: #fff;
+                border-radius: 50%;
+                padding: 2px;
+              "
+            >
+              close
+            </span>
+            <img
+              [src]="media"
+              alt="media"
+              style="
+                aspect-ratio: 1;
+                object-fit: cover;
+                width: 85px;
+                height: 85px;
+                border-radius: 10px;
+                display: block;
+              "
+            />
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" style="margin-top: 20px">{{formBtn}}</button>
+
+    <!-- Global error -->
+    <p class="error text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

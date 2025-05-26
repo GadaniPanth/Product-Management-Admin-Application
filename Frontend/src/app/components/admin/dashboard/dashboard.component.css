@@ -1,0 +1,87 @@
+.dashboard-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logout-btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.active {
+    outline: 2px solid #ff7e5f;
+    outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-link,
+    .logout-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,140 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.navbar{
+    height: 100dvh;
+    width: 15dvw;
+    min-width: 250px;
+    position: fixed;
+    z-index: 999;
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    top: 0;
+    left: -50%;
+    padding: 50px 0 0 50px;
+    max-width: 0;
+    /* max-height: 0; */
+    transition: all .5s ease-in-out, left .4s ease-out;
+    color: white;
+}
+
+.navbar .active{
+    color: #FF8161;
+}
+
+.navbar ul{
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.navbar ul li{
+    padding: 10px 0;
+}
+
+.navbar ul li a{
+    font-size: 20px;
+}
+
+.navbar.active{
+    max-width: 100%;
+    max-height: 100%;
+    left: 0;
+}
+
+.menu_btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 50px;
+  /* display: none; */
+    color: #000000;
+    z-index: 999999;
+}
+
+.menu_text {
+  font-weight: normal;
+  color: #213b74;
+  text-transform: uppercase;
+}
+
+.menu_btn,
+.menu_text,
+.menu_close {
+  cursor: pointer;
+}
+
+.menu {
+  --s: 25px;
+  --c: #FF8161;
+  height: var(--s);
+  /* width: 30px; */
+  aspect-ratio: 1;
+  border: none;
+  padding: 0;
+  border-inline: calc(var(--s) / 2) solid #0000;
+  box-sizing: content-box;
+  --_g1: linear-gradient(var(--c) 20%, #0000 0 80%, var(--c) 0) no-repeat
+    content-box border-box;
+  --_g2: radial-gradient(circle closest-side at 50% 12.5%, var(--c) 95%, #0000)
+    repeat-y content-box border-box;
+  background: var(--_g2) left var(--_p, 0px) top,
+    var(--_g1) left calc(var(--s) / 10 + var(--_p, 0px)) top,
+    var(--_g2) right var(--_p, 0px) top,
+    var(--_g1) right calc(var(--s) / 10 + var(--_p, 0px)) top;
+  background-size: 20% 80%, 40% 100%;
+  position: relative;
+  z-index: 9999;
+  clip-path: inset(0 25%);
+  -webkit-mask: linear-gradient(90deg, #0000, #000 25% 75%, #0000);
+  cursor: pointer;
+  transition: background-position 0.3s var(--_s, 0.3s),
+    clip-path 0s var(--_s, 0.6s);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.menu:before,
+.menu:after {
+  content: "";
+  position: absolute;
+  border-radius: var(--s);
+  inset: 40% 0;
+  background: var(--c);
+  transition: transform 0.3s calc(0.3s - var(--_s, 0.3s));
+}
+
+.menu:checked {
+  clip-path: inset(0);
+  --_p: calc(-1 * var(--s));
+  --_s: 0s;
+}
+
+.menu:checked:before {
+  transform: rotate(45deg);
+}
+
+.menu:checked:after {
+  transform: rotate(-45deg);
+}
+
+.menu_overlay.active{
+    display: block;
+    background: #00000038;
+    z-index: 99;
+}
+
+.menu_overlay{
+    height: 100dvh;
+    width: 100dvw;
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+}

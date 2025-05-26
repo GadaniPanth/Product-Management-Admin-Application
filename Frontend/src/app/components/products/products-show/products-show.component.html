@@ -1,0 +1,93 @@
+<div class="products-container">
+  <h2>Products List</h2>
+  <table *ngIf="products.length > 0; else NoProducts">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <!-- <th>Count</th> -->
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let id = index" class="product-row">
+        <td>{{ id + 1 }}</td>
+        <td>{{ product.name }}</td>
+        <td>
+          <!-- <ng-container *ngFor="let image of product.image">
+            <img
+              [src]="image"
+              alt="Product Image"
+              class="img-thumbnail"
+              style="width: 60px; height: 60px"
+            />
+          </ng-container> -->
+          <!-- Swiper -->
+          <div class="swiper-container" style="height: 100%">
+            <div class="swiper-wrapper">
+              <ng-container *ngIf="product.image.length > 0; else defaultPreview">
+                <div
+                class="swiper-slide"
+                *ngFor="let image of product.image"
+                style="width: 60px; height: 100%"
+              >
+                <img
+                  [src]="image"
+                  alt="Product Image"
+                  class="img-thumbnail"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+              </ng-container>
+              <ng-template #defaultPreview>
+                <div
+                  class="swiper-slide"
+                  style="width: 60px; height: 100%"
+                >
+                  <img
+                    [src]="defaultImage"
+                    alt="Product Image"
+                    class="img-thumbnail"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+              </ng-template>
+              
+              
+            </div>
+
+            <!-- Optional navigation -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+          </div>
+        </td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.amount | currency }}</td>
+        <!-- <td>{{ product.count }}</td> -->
+        <td>
+          <!-- Edit -->
+          <button class="btn btn-warning" (click)="onEdit(product.name)">
+            <span class="material-symbols-outlined"> edit </span>
+          </button>
+          <!-- delete -->
+          <button
+            (click)="deleteProduct(product.id, product.name)"
+            class="btn btn-danger"
+            title="Delete"
+          >
+            <span class="material-symbols-outlined"> delete </span>
+            <!-- <i class="fas fa-trash-alt"></i> -->
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #NoProducts>
+    <h1>{{ message }}</h1>
+  </ng-template>
+</div>
